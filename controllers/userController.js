@@ -25,10 +25,14 @@ module.exports = {
   },
 
   updateUser(req, res) {
-    User.findOneAndUpdate({_id: req.params.userId}, {});
+    User.findOneAndUpdate({_id: req.params.userId}, {username: req.body.username, email: req.body.email})
+    .then((dbUserData) => res.json(dbUserData))
+    .catch((err) => res.status(500).json(err));
   },
 
   deleteUser(req, res) {
-    User.findOneAndDelete({_id: req.params.userId});
+    User.findOneAndDelete({_id: req.params.userId})
+    .then((dbUserData) => res.json(dbUserData))
+    .catch((err) => res.status(500).json(err));
   }
 };
