@@ -1,9 +1,12 @@
 const { Schema, model } = require('mongoose');
 
+// defines user schema
 const userSchema = new Schema(
   {
     username: { type: String, required: true, unique: true, trim: true },
+    // validates email format
     email: { type: String, required: true, unique: true, trim: true, match: /.+\@.+\..+/, },
+    // defines list of thought and friend IDs linked to relevant objects
     thoughts: [
       {
         type: Schema.Types.ObjectId,
@@ -25,6 +28,7 @@ const userSchema = new Schema(
   }
 );
 
+// friend count returns length of friends array
 userSchema
   .virtual('friendCount')
   .get(function () {

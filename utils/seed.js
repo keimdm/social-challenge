@@ -8,6 +8,8 @@ connection.once('open', async () => {
   await Thought.deleteMany({});
   await User.deleteMany({});
 
+  // sample seed data for users and thoughts
+
   const users = [
     {
         username: "Test One",
@@ -41,9 +43,7 @@ connection.once('open', async () => {
   await User.collection.insertMany(users);
   await Thought.collection.insertMany(thoughts);
 
-  // loop through the saved applications, for each application we need to generate a application response and insert the application responses
   console.table(users);
   console.table(thoughts);
-  console.info('Seeding complete! 🌱');
   process.exit(0);
 });

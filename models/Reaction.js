@@ -1,5 +1,6 @@
 const { Schema, Types } = require('mongoose');
 
+// defines reaction schema without creating a model for it
 const reactionSchema = new Schema(
   {
     reactionId: { type: Schema.Types.ObjectId, default: () => new Types.ObjectId() },

@@ -1,6 +1,7 @@
 const { Schema, model } = require('mongoose');
 const Reaction = require('./Reaction');
 
+// creates thought schema
 const thoughtSchema = new Schema(
   {
     thoughtText: { type: String, required: true, minLength: 1, maxLength: 280 },
@@ -16,10 +17,12 @@ const thoughtSchema = new Schema(
   }
 );
 
+// getter function returns the date as a string
 function format(rawDate) {
     return rawDate.toString();
 }
 
+// virtual function to get the number of reactions on the post
 thoughtSchema
   .virtual('reactionCount')
   .get(function () {
